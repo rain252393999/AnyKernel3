@@ -543,7 +543,7 @@ jobs:
           case "${{ inputs.ksu_variant }}" in
             "SukiSU")
               echo "添加 ${{ inputs.ksu_variant }}..."
-              curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash $BRANCH
+              curl -LSs "https://raw.githubusercontent.com/SukiSU-Nova/SukiSU-Nova/main/kernel/setup.sh" | bash $BRANCH
               # 内核侧 KSU 版本来源对齐官方最新上传 Manager 构建：
               # SukiSU 版本号 = 40000 + REPO_BRANCH 指向分支的提交数 - 2815
               #（main 分支定义在 kernel/Kbuild，builtin 分支定义在 kernel/Makefile，
@@ -699,7 +699,7 @@ jobs:
             KSU_COUNT=$(git -C KernelSU rev-list --count "${{ inputs.ksu_commit }}" 2>/dev/null || echo "")
             if [ -n "$KSU_COUNT" ]; then
               case "${{ inputs.ksu_variant }}" in
-                SukiSU) KSU_VERSION=$((40000 + KSU_COUNT - 2815)) ;;
+                SukiSU) KSU_VERSION=$((30000 + KSU_COUNT)) ;;
                 BakaSU) KSU_VERSION=$((30700 + KSU_COUNT)) ;;
                 FinaSU) KSU_VERSION=$((30000 + KSU_COUNT)) ;;
               esac
