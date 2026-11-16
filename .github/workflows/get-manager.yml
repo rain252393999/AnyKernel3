@@ -462,7 +462,7 @@ jobs:
           # 版本号与管理器 versionCode 同源（提交数 + 偏移），用于按版本挑选构建
           ksu_version_of() {
             case "$1" in
-              SukiSU) echo $((40000 + $2 - 2815)) ;;
+              SukiSU) echo $((30000 + $2)) ;;
               BakaSU) echo $((30700 + $2)) ;;
               FinaSU) echo $((30000 + $2)) ;;
             esac
