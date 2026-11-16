@@ -143,7 +143,7 @@ jobs:
 
           if [ "${{ inputs.kernelsu_variant }}" == "SukiSU" ]; then
             echo "This is the SukiSU variant"
-            git clone https://github.com/SukiSU-Ultra/SukiSU-Ultra.git KernelSU
+            git clone https://github.com/SukiSU-Nova/SukiSU-Nova.git KernelSU
           elif [ "${{ inputs.kernelsu_variant }}" == "BakaSU" ]; then
             echo "This is the BakaSU variant"
             git clone https://github.com/Baka-SU/BakaSU.git KernelSU
@@ -161,7 +161,7 @@ jobs:
           KSU_GIT_VERSION=$(git rev-list --count HEAD)
 
           if [ "${{ inputs.kernelsu_variant }}" == "SukiSU" ]; then
-            KSU_VERSION=$((40000 + KSU_GIT_VERSION - 2815))
+            KSU_VERSION=$((30000 + KSU_GIT_VERSION))
           elif [ "${{ inputs.kernelsu_variant }}" == "FinaSU" ]; then
             # FinaSU 内核 Kbuild 与管理器 build.gradle.kts 均以 30000 + git 提交数计算版本
             KSU_VERSION=$((30000 + KSU_GIT_VERSION))
@@ -198,7 +198,7 @@ jobs:
           echo "构建通道: $CHANNEL_RAW -> $CHANNEL_KIND (pin_mode=$PIN_MODE)"
 
           case "${{ inputs.kernelsu_variant }}" in
-            "SukiSU") REPO="SukiSU-Ultra/SukiSU-Ultra"; PREF="universal" ;;
+            "SukiSU") REPO="SukiSU-Nova/SukiSU-Nova"; PREF="universal" ;;
             "BakaSU") REPO="Baka-SU/BakaSU";           PREF="arm64" ;;
             "FinaSU") REPO="LyraVoid/FinaSU";          PREF="universal" ;;
             *) echo "::error::未知变体"; exit 1 ;;
@@ -304,7 +304,7 @@ jobs:
           VARIANT="${{ inputs.kernelsu_variant }}"
 
           case "$VARIANT" in
-            "SukiSU") REPO="SukiSU-Ultra/SukiSU-Ultra"; KSUM="manager"; EXPECTED_BRANCH="main" ;;
+            "SukiSU") REPO="SukiSU-Nova/SukiSU-Nova"; KSUM="manager"; EXPECTED_BRANCH="main" ;;
             "BakaSU") REPO="Baka-SU/BakaSU";           KSUM="manager"; EXPECTED_BRANCH="main" ;;
             "FinaSU") REPO="LyraVoid/FinaSU";          KSUM="manager"; EXPECTED_BRANCH="master" ;;
             *) echo "::error::未知变体: $VARIANT"; exit 1 ;;
